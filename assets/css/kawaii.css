@@ -1,0 +1,151 @@
+/* ===== Tema fofo: 3 paletas (kitty, melody, kuromi) ===== */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Pacifico&display=swap');
+
+:root, [data-tema="melody"] {
+  --bg: #fff0f6;
+  --bg-dot: #ffd1e3;
+  --principal: #ff8fbf;
+  --principal-escuro: #e8629e;
+  --suave: #ffe3ef;
+  --destaque: #c9a7ff;
+  --texto: #5a3a4a;
+  --card: #ffffff;
+  --borda: #ffb8d6;
+}
+[data-tema="kitty"] {
+  --bg: #fff8fa;
+  --bg-dot: #ffd9de;
+  --principal: #ff5c7a;
+  --principal-escuro: #e03a5c;
+  --suave: #ffe6ea;
+  --destaque: #ffd84d;
+  --texto: #5a2b36;
+  --card: #ffffff;
+  --borda: #ffb3c0;
+}
+[data-tema="kuromi"] {
+  --bg: #2a2034;
+  --bg-dot: #3a2c48;
+  --principal: #b07cff;
+  --principal-escuro: #8e5bd8;
+  --suave: #3d2f4d;
+  --destaque: #ff7eb6;
+  --texto: #f3e8ff;
+  --card: #382a46;
+  --borda: #6e4fa8;
+}
+
+body {
+  font-family: 'Fredoka', system-ui, sans-serif;
+  color: var(--texto);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(var(--bg-dot) 22%, transparent 23%),
+    radial-gradient(var(--bg-dot) 22%, transparent 23%);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5 { font-weight: 600; }
+.titulo-fofo { font-family: 'Pacifico', cursive; font-weight: 400; color: var(--principal-escuro); }
+[data-tema="kuromi"] .titulo-fofo { color: var(--destaque); }
+
+/* ---- navbar ---- */
+.navbar.nav-fofa {
+  background: linear-gradient(90deg, var(--principal), var(--destaque)) !important;
+  border-bottom: 4px dotted #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+.nav-fofa .navbar-brand { font-family: 'Pacifico', cursive; font-size: 1.5rem; color: #fff; }
+.nav-fofa .nav-link { color: #fff !important; font-weight: 500; border-radius: 50rem; padding: .35rem 1rem !important; margin: 0 .15rem; }
+.nav-fofa .nav-link:hover { background: rgba(255,255,255,.3); }
+.nav-fofa .navbar-text { color: #fff; }
+
+/* seletor de tema */
+.seletor-tema { display: inline-flex; gap: .4rem; margin-right: .75rem; }
+.seletor-tema button {
+  width: 30px; height: 30px; border-radius: 50%; border: 3px solid #fff;
+  cursor: pointer; transition: transform .2s; padding: 0;
+}
+.seletor-tema button:hover { transform: scale(1.25) rotate(10deg); }
+.seletor-tema .t-kitty  { background: #ff5c7a; }
+.seletor-tema .t-melody { background: #ff8fbf; }
+.seletor-tema .t-kuromi { background: #8e5bd8; }
+
+/* ---- cards ---- */
+.card, .card-fofo {
+  background: var(--card);
+  color: var(--texto);
+  border: 3px solid var(--borda);
+  border-radius: 28px;
+  box-shadow: 0 8px 0 var(--borda), 0 14px 24px rgba(0,0,0,.08);
+}
+
+/* ---- botões ---- */
+.btn { border-radius: 50rem; font-weight: 500; padding-left: 1.2rem; padding-right: 1.2rem; transition: transform .15s; }
+.btn:hover { transform: translateY(-2px) scale(1.04); }
+.btn-dark, .btn-fofo {
+  background: var(--principal); border: 3px solid #fff; color: #fff;
+  box-shadow: 0 4px 0 var(--principal-escuro);
+}
+.btn-dark:hover, .btn-fofo:hover { background: var(--principal-escuro); color: #fff; }
+.btn-outline-primary { color: var(--principal-escuro); border-color: var(--principal-escuro); }
+.btn-outline-primary:hover { background: var(--principal-escuro); border-color: var(--principal-escuro); }
+.btn-outline-danger:hover { transform: translateY(-2px) rotate(-3deg) scale(1.05); }
+.btn-secondary { background: var(--destaque); border: 3px solid #fff; color: #4a3355; }
+.btn-outline-light { border-width: 2px; }
+
+/* ---- formulários ---- */
+.form-control {
+  border: 2px solid var(--borda); border-radius: 50rem; padding: .55rem 1.1rem;
+  background: var(--card); color: var(--texto);
+}
+.form-control::placeholder { color: var(--principal); opacity: .8; }
+.form-control:focus {
+  border-color: var(--principal-escuro);
+  box-shadow: 0 0 0 .25rem rgba(255,143,191,.35);
+  background: var(--card); color: var(--texto);
+}
+.form-label { font-weight: 500; }
+
+/* ---- tabelas ---- */
+.table-fofa { border-collapse: separate; border-spacing: 0 8px; --bs-table-bg: transparent; --bs-table-color: var(--texto); }
+.table-fofa thead th {
+  background: var(--principal); color: #fff; border: 0; padding: .7rem 1rem;
+}
+.table-fofa thead th:first-child { border-radius: 20px 0 0 20px; }
+.table-fofa thead th:last-child  { border-radius: 0 20px 20px 0; }
+.table-fofa tbody tr { background: var(--card); box-shadow: 0 3px 0 var(--borda); }
+.table-fofa tbody td { background: var(--card); color: var(--texto); border: 0; padding: .7rem 1rem; }
+.table-fofa tbody td:first-child { border-radius: 20px 0 0 20px; }
+.table-fofa tbody td:last-child  { border-radius: 0 20px 20px 0; }
+.table-fofa tbody tr:hover td { background: var(--suave); }
+
+/* ---- alertas ---- */
+.alert { border-radius: 20px; border: 3px dashed var(--borda); }
+
+/* ---- login ---- */
+.login-box { max-width: 400px; margin: 10vh auto 0; position: relative; }
+.login-box .laco { font-size: 3.2rem; display: block; text-align: center; animation: balanca 2.5s ease-in-out infinite; }
+@keyframes balanca { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
+
+/* ---- enfeites flutuando ---- */
+.flutua { position: fixed; z-index: 0; pointer-events: none; font-size: 2rem; opacity: .65; animation: sobe 7s ease-in-out infinite; }
+.flutua:nth-child(1) { left: 6%;  top: 14%; animation-delay: 0s; }
+.flutua:nth-child(2) { left: 88%; top: 20%; animation-delay: 1s; }
+.flutua:nth-child(3) { left: 12%; top: 72%; animation-delay: 2s; }
+.flutua:nth-child(4) { left: 82%; top: 70%; animation-delay: 3s; }
+.flutua:nth-child(5) { left: 50%; top: 88%; animation-delay: 4s; }
+.flutua:nth-child(6) { left: 70%; top: 8%;  animation-delay: 5s; }
+@keyframes sobe { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-18px) rotate(6deg); } }
+.container { position: relative; z-index: 1; }
+
+/* ---- boas-vindas ---- */
+.hero { text-align: center; padding: 2.5rem 1rem; }
+.hero .grande { font-size: 4rem; }
+.atalho { display: block; text-decoration: none; text-align: center; padding: 2rem 1rem; color: var(--texto); transition: transform .2s; }
+.atalho:hover { transform: translateY(-6px) rotate(-1deg); color: var(--texto); }
+.atalho .emoji { font-size: 3.5rem; display: block; }
+
+.text-muted { color: var(--texto) !important; opacity: .7; }

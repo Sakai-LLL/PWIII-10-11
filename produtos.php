@@ -27,46 +27,42 @@ if (isset($_GET['editar'])) {
     $editando = $p->buscar();
 }
 $lista = $p->listar();
-?>
-<!doctype html>
-<html lang="pt-br">
-<head>
-  <meta charset="utf-8">
-  <title>Produtos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-<?php include 'includes/navbar.php'; ?>
-<div class="container mt-4">
-  <h4><?= $editando ? 'Alterar produto' : 'Novo produto' ?></h4>
-  <form method="post" class="row g-2 mb-4">
-    <input type="hidden" name="acao" value="salvar">
-    <input type="hidden" name="id" value="<?= $editando['id'] ?? 0 ?>">
-    <div class="col-md-3"><input name="nome" class="form-control" placeholder="Nome" required
-         value="<?= htmlspecialchars($editando['nome'] ?? '') ?>"></div>
-    <div class="col-md-4"><input name="descricao" class="form-control" placeholder="Descrição"
-         value="<?= htmlspecialchars($editando['descricao'] ?? '') ?>"></div>
-    <div class="col-md-2"><input name="preco" class="form-control" placeholder="Preço" required
-         value="<?= $editando['preco'] ?? '' ?>"></div>
-    <div class="col-md-3">
-      <button class="btn btn-dark">Salvar</button>
-      <?php if ($editando): ?><a href="produtos.php" class="btn btn-secondary">Cancelar</a><?php endif; ?>
-    </div>
-  </form>
 
-  <table class="table table-striped align-middle">
+$titulo = 'Produtos';
+include 'includes/head.php';
+include 'includes/navbar.php';
+?>
+<div class="container mt-4">
+  <div class="card mb-4"><div class="card-body p-4">
+    <h4 class="titulo-fofo mb-3"><?= $editando ? '✏️ Alterar produto' : '🍓 Novo produto' ?></h4>
+    <form method="post" class="row g-2">
+      <input type="hidden" name="acao" value="salvar">
+      <input type="hidden" name="id" value="<?= $editando['id'] ?? 0 ?>">
+      <div class="col-md-3"><input name="nome" class="form-control" placeholder="Nome" required
+           value="<?= htmlspecialchars($editando['nome'] ?? '') ?>"></div>
+      <div class="col-md-4"><input name="descricao" class="form-control" placeholder="Descrição"
+           value="<?= htmlspecialchars($editando['descricao'] ?? '') ?>"></div>
+      <div class="col-md-2"><input name="preco" class="form-control" placeholder="Preço" required
+           value="<?= $editando['preco'] ?? '' ?>"></div>
+      <div class="col-md-3">
+        <button class="btn btn-dark">Salvar ♡</button>
+        <?php if ($editando): ?><a href="produtos.php" class="btn btn-secondary">Cancelar</a><?php endif; ?>
+      </div>
+    </form>
+  </div></div>
+
+  <table class="table table-fofa align-middle">
     <thead><tr><th>#</th><th>Nome</th><th>Descrição</th><th>Preço</th><th class="text-end">Ações</th></tr></thead>
     <tbody>
     <?php foreach ($lista as $l): ?>
       <tr>
         <td><?= $l['id'] ?></td>
-        <td><?= htmlspecialchars($l['nome']) ?></td>
+        <td>🎀 <?= htmlspecialchars($l['nome']) ?></td>
         <td><?= htmlspecialchars($l['descricao']) ?></td>
         <td>R$ <?= number_format($l['preco'], 2, ',', '.') ?></td>
         <td class="text-end">
           <a class="btn btn-sm btn-outline-primary" href="?editar=<?= $l['id'] ?>">Editar</a>
-          <form method="post" class="d-inline" onsubmit="return confirm('Apagar este produto?')">
+          <form method="post" class="d-inline" onsubmit="return confirm('Apagar este produto? 🥺')">
             <input type="hidden" name="acao" value="apagar">
             <input type="hidden" name="id" value="<?= $l['id'] ?>">
             <button class="btn btn-sm btn-outline-danger">Apagar</button>
@@ -77,6 +73,4 @@ $lista = $p->listar();
     </tbody>
   </table>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+<?php include 'includes/foot.php'; ?>
